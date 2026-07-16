@@ -25,7 +25,7 @@ struct HistoryBadge: View {
         } icon: {
             icon
         }
-        .font(.caption.weight(.semibold))
+        .font(AppFont.caption.weight(.semibold))
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .foregroundStyle(foregroundColor)
@@ -47,7 +47,7 @@ struct HistoryBadge: View {
     private var icon: some View {
         switch kind {
         case .lowes:
-            Image("Lowes-Filled", bundle: .sharedUI)
+            Image("Lowes-Filled")
                 .renderingMode(.template)
         case .diy:
             Image(systemName: "person.fill")
@@ -83,4 +83,5 @@ struct HistoryBadge: View {
 
 #Preview {
     HistoryBadge(kind: .diy)
+    HistoryBadge(kind: .lowes)
 }

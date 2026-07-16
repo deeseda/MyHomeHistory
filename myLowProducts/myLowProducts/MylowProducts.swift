@@ -16,13 +16,7 @@ struct MyLowProductsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HistoryCard(
-                title: "Back Deck Stained",
-                subtitle: "Applied Behr Premium Semi-Transparent Cedar stain. Photos and receipts attached.",
-                badgeKind: .diy,
-                showsAddedByIndicator: true,
-                date: "Friday, Jun 12"
-            )
+            MyHome()
         }
     }
 }

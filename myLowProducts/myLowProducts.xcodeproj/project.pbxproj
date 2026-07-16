@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		58427F0E3007DF2E0040EE3C /* HistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58427F0D3007DF2E0040EE3C /* HistoryCard.swift */; };
-		58716CF930001BB700EA36C8 /* SharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 58716CF830001BB700EA36C8 /* SharedUI */; };
+		58427F103007DF2E0040EE3C /* HomeHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */; };
 		58FA07E23007F55F0086DA25 /* MyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FA07E13007F55F0086DA25 /* MyHome.swift */; };
 		58FA07E43007F60B0086DA25 /* MyHomeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */; };
+		9FAF607930082DB80043682A /* SharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9FAF607830082DB80043682A /* SharedUI */; };
+		9FAF609D300851120043682A /* HomeHistoryIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF609C300851120043682A /* HomeHistoryIcon.icon */; };
+		9FAF609F300854100043682A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF609E300854100043682A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* myLowProducts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myLowProducts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58427F0D3007DF2E0040EE3C /* HistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCard.swift; sourceTree = "<group>"; };
-		5890E73930001A80000DECE3 /* SharedUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedUI; path = ../../../../../Documents/Apps/SharedUI; sourceTree = "<group>"; };
+		58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHistorySheet.swift; sourceTree = "<group>"; };
 		58FA07E13007F55F0086DA25 /* MyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHome.swift; sourceTree = "<group>"; };
 		58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeHistory.swift; sourceTree = "<group>"; };
+		9FAF609C300851120043682A /* HomeHistoryIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = HomeHistoryIcon.icon; sourceTree = "<group>"; };
+		9FAF609E300854100043682A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,7 +38,7 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				58716CF930001BB700EA36C8 /* SharedUI in Frameworks */,
+				9FAF607930082DB80043682A /* SharedUI in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -42,10 +47,12 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				9FAF609E300854100043682A /* Launch Screen.storyboard */,
 				58B6E9DB3007BECC0041A450 /* My Home History */,
 				000000000000000000000010 /* myLowProducts */,
 				5890E73830001A80000DECE3 /* Frameworks */,
 				000000000000000000000020 /* Products */,
+				9FAF609C300851120043682A /* HomeHistoryIcon.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,7 +67,6 @@
 		5890E73830001A80000DECE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5890E73930001A80000DECE3 /* SharedUI */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				58427F0D3007DF2E0040EE3C /* HistoryCard.swift */,
+				58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */,
 				58FA07E13007F55F0086DA25 /* MyHome.swift */,
 				58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */,
 			);
@@ -93,7 +100,7 @@
 			);
 			name = myLowProducts;
 			packageProductDependencies = (
-				58716CF830001BB700EA36C8 /* SharedUI */,
+				9FAF607830082DB80043682A /* SharedUI */,
 			);
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* myLowProducts.app */;
@@ -125,7 +132,7 @@
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				58716CF730001BB700EA36C8 /* XCLocalSwiftPackageReference "../SharedUI" */,
+				9FAF607730082DB80043682A /* XCLocalSwiftPackageReference "../SharedUI" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
@@ -141,6 +148,8 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				9FAF609F300854100043682A /* Launch Screen.storyboard in Resources */,
+				9FAF609D300851120043682A /* HomeHistoryIcon.icon in Resources */,
 			);
 		};
 /* End PBXResourcesBuildPhase section */
@@ -152,6 +161,7 @@
 				58FA07E23007F55F0086DA25 /* MyHome.swift in Sources */,
 				58FA07E43007F60B0086DA25 /* MyHomeHistory.swift in Sources */,
 				58427F0E3007DF2E0040EE3C /* HistoryCard.swift in Sources */,
+				58427F103007DF2E0040EE3C /* HomeHistorySheet.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
@@ -292,6 +302,7 @@
 		000000000000000111000000 /* Debug configuration for PBXNativeTarget "myLowProducts" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -299,16 +310,19 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Home History";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -317,20 +331,21 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		000000000000000112000000 /* Release configuration for PBXNativeTarget "myLowProducts" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -338,16 +353,19 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Home History";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -356,13 +374,13 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -388,15 +406,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		58716CF730001BB700EA36C8 /* XCLocalSwiftPackageReference "../SharedUI" */ = {
+		9FAF607730082DB80043682A /* XCLocalSwiftPackageReference "../SharedUI" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SharedUI;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		58716CF830001BB700EA36C8 /* SharedUI */ = {
+		9FAF607830082DB80043682A /* SharedUI */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 9FAF607730082DB80043682A /* XCLocalSwiftPackageReference "../SharedUI" */;
 			productName = SharedUI;
 		};
 /* End XCSwiftPackageProductDependency section */

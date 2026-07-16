@@ -9,7 +9,12 @@ import SwiftUI
 import SharedUI
 
 struct HistoryCard: View {
-    var image: Image?
+    enum Media {
+        case single(Image)
+        case multi(images: [Image], remainingCount: Int? = nil)
+    }
+
+    var media: Media?
     var title: String
     var subtitle: String
     var badgeKind: HistoryBadge.Kind
@@ -18,9 +23,11 @@ struct HistoryCard: View {
     var date: String
     var buttonTitle: String?
     var buttonAction: (() -> Void)?
+    var mediaTapAction: (([Image], Int) -> Void)?
 
     init(
         image: Image? = nil,
+        media: Media? = nil,
         title: String,
         subtitle: String,
         badgeKind: HistoryBadge.Kind,
@@ -28,9 +35,10 @@ struct HistoryCard: View {
         attachmentIcon: Image? = nil,
         date: String,
         buttonTitle: String? = nil,
-        buttonAction: (() -> Void)? = nil
+        buttonAction: (() -> Void)? = nil,
+        mediaTapAction: (([Image], Int) -> Void)? = nil
     ) {
-        self.image = image
+        self.media = media ?? image.map(Media.single)
         self.title = title
         self.subtitle = subtitle
         self.badgeKind = badgeKind
@@ -39,15 +47,16 @@ struct HistoryCard: View {
         self.date = date
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
+        self.mediaTapAction = mediaTapAction
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            if let image {
-                headerImage(image)
+        VStack(alignment: .leading, spacing: 8) {
+            if let media {
+                headerMedia(media)
             }
 
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 8) {
                 titleBlock
                 metaRow
                 divider
@@ -60,21 +69,164 @@ struct HistoryCard: View {
         }
         .padding(16)
         .background(AppColor.backgroundPrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 4)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 4)
     }
 
-    // MARK: - Header Image
+    // MARK: - Header Media
 
     @ViewBuilder
-    private func headerImage(_ image: Image) -> some View {
+    private func headerMedia(_ media: Media) -> some View {
+        if let mediaTapAction {
+            Button {
+                mediaTapAction(media.images, 0)
+            } label: {
+                headerMediaContent(media)
+            }
+            .buttonStyle(.plain)
+        } else {
+            headerMediaContent(media)
+        }
+    }
+
+    @ViewBuilder
+    private func headerMediaContent(_ media: Media) -> some View {
+        switch media {
+        case .single(let image):
+            mediaImage(image)
+                .frame(height: 120)
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+
+        case .multi(let images, let remainingCount):
+            mediaGrid(images: images, remainingCount: remainingCount)
+        }
+    }
+
+    private func mediaImage(_ image: Image) -> some View {
         image
             .resizable()
             .scaledToFill()
-            .frame(height: 120)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipped()
-            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+    }
+
+    private func mediaGrid(images: [Image], remainingCount: Int?) -> some View {
+        let gridImages = Array(images.prefix(5))
+
+        return GeometryReader { proxy in
+            let height: CGFloat = 120
+            let leftWidth = (proxy.size.width - 2) / 2
+            let rightWidth = leftWidth
+            let tileWidth = (rightWidth - 2) / 2
+            let tileHeight = (height - 2) / 2
+
+            HStack(spacing: 2) {
+                if let firstImage = gridImages.first {
+                    fixedMediaImage(firstImage, width: leftWidth, height: height)
+                        .clipShape(
+                            UnevenRoundedRectangle(
+                                topLeadingRadius: 4,
+                                bottomLeadingRadius: 4,
+                                bottomTrailingRadius: 2,
+                                topTrailingRadius: 2,
+                                style: .continuous
+                            )
+                        )
+                }
+
+                VStack(spacing: 2) {
+                    HStack(spacing: 2) {
+                        gridTile(
+                            at: 1,
+                            in: gridImages,
+                            width: tileWidth,
+                            height: tileHeight
+                        )
+                        gridTile(
+                            at: 2,
+                            in: gridImages,
+                            width: tileWidth,
+                            height: tileHeight,
+                            corners: .topTrailing
+                        )
+                    }
+
+                    HStack(spacing: 2) {
+                        gridTile(
+                            at: 3,
+                            in: gridImages,
+                            width: tileWidth,
+                            height: tileHeight
+                        )
+                        gridTile(
+                            at: 4,
+                            in: gridImages,
+                            width: tileWidth,
+                            height: tileHeight,
+                            corners: .bottomTrailing
+                        )
+                            .overlay(alignment: .bottomTrailing) {
+                                if let remainingCount, remainingCount > 0 {
+                                    remainingBadge(count: remainingCount)
+                                        .padding(2)
+                                }
+                            }
+                    }
+                }
+                .frame(width: rightWidth, height: height)
+            }
+        }
+        .frame(height: 120)
+        .frame(maxWidth: .infinity)
+        .clipped()
+    }
+
+    @ViewBuilder
+    private func gridTile(
+        at index: Int,
+        in images: [Image],
+        width: CGFloat,
+        height: CGFloat,
+        corners: GridTileCorners = []
+    ) -> some View {
+        if images.indices.contains(index) {
+            fixedMediaImage(images[index], width: width, height: height)
+                .clipShape(tileShape(for: corners))
+        } else {
+            Rectangle()
+                .fill(AppColor.groupedBackgroundElevated)
+                .frame(width: width, height: height)
+                .clipShape(tileShape(for: corners))
+        }
+    }
+
+    private func fixedMediaImage(_ image: Image, width: CGFloat, height: CGFloat) -> some View {
+        image
+            .resizable()
+            .scaledToFill()
+            .frame(width: width, height: height)
+            .clipped()
+    }
+
+    private func remainingBadge(count: Int) -> some View {
+        Text("+\(count)")
+            .font(.system(size: 17, weight: .semibold))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(.white.opacity(0.3), in: tileShape(for: .bottomTrailing))
+            .shadow(color: .black.opacity(0.02), radius: 10, x: 2, y: 4)
+    }
+
+    private func tileShape(for corners: GridTileCorners) -> UnevenRoundedRectangle {
+        UnevenRoundedRectangle(
+            topLeadingRadius: 2,
+            bottomLeadingRadius: 2,
+            bottomTrailingRadius: corners.contains(.bottomTrailing) ? 4 : 2,
+            topTrailingRadius: corners.contains(.topTrailing) ? 4 : 2,
+            style: .continuous
+        )
     }
 
     // MARK: - Title & Subtitle
@@ -82,14 +234,15 @@ struct HistoryCard: View {
     private var titleBlock: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(AppFont.body.weight(.semibold))
+                .font(AppFont.callout)
+                .fontWeight(.semibold)
                 .foregroundStyle(AppColor.labelPrimary)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
 
             Text(subtitle)
                 .font(AppFont.caption)
-                .foregroundStyle(AppColor.labelPrimary)
+                .foregroundStyle(AppColor.labelSecondary)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
         }
@@ -145,7 +298,7 @@ struct HistoryCard: View {
         Text(date)
             .font(AppFont.caption)
             .fontWeight(.semibold)
-            .foregroundStyle(AppColor.labelSecondary)
+            .foregroundStyle(AppColor.labelPrimary)
             .frame(maxWidth: .infinity, alignment: .leading)
 
     }
@@ -157,7 +310,7 @@ struct HistoryCard: View {
             buttonAction?()
         } label: {
             Text(title)
-                .font(AppFont.subheadline)
+                .font(AppFont.subheadlineEmphasized)
                 .foregroundStyle(.blue)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
@@ -174,7 +327,6 @@ struct HistoryCard: View {
 #Preview {
     ScrollView {
         HistoryCard(
-            image: Image("deck-1"),
             title: "Added LG French Door Refrigerator",
             subtitle: "Purchased at Central Charlotte Lowe's",
             badgeKind: .lowes,
@@ -185,6 +337,7 @@ struct HistoryCard: View {
         .padding()
 
         HistoryCard(
+            image: Image("deck-1"),
             title: "Back Deck Stained",
             subtitle: "Applied Behr Premium Semi-Transparent Cedar stain. Photos and receipts attached.",
             badgeKind: .diy,
@@ -193,5 +346,23 @@ struct HistoryCard: View {
         )
         .padding(.horizontal)
     }
-    .background(Color(.systemGroupedBackground))
+    .background(AppColor.groupedBackground)
+}
+
+private struct GridTileCorners: OptionSet {
+    let rawValue: Int
+
+    static let topTrailing = GridTileCorners(rawValue: 1 << 0)
+    static let bottomTrailing = GridTileCorners(rawValue: 1 << 1)
+}
+
+private extension HistoryCard.Media {
+    var images: [Image] {
+        switch self {
+        case .single(let image):
+            return [image]
+        case .multi(let images, _):
+            return images
+        }
+    }
 }

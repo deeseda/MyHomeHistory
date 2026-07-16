@@ -21,9 +21,6 @@ struct ProductCard: View {
     var rating: String
     var reviewCount: String
 
-    private let bodySmall = Font.custom("Fellix-Regular", size: 12)
-    private let bodySmallSemibold = Font.custom("Fellix-SemiBold", size: 12)
-
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
 
@@ -78,7 +75,7 @@ struct ProductCard: View {
                     .padding(.top, 4)
                     .padding(.bottom, 2)
                 Text(dollars)
-                    .font(AppFont.title)
+                    .font(AppFont.displayTitle)
                     .tracking(0.36)
                     .foregroundStyle(AppColor.labelPrimary)
                 Text(cents)
@@ -90,7 +87,7 @@ struct ProductCard: View {
             }
 
             Text(originalPrice)
-                .font(bodySmall)
+                .font(AppFont.caption)
                 .strikethrough()
                 .foregroundStyle(AppColor.labelSecondary)
                 .padding(.vertical, 4)
@@ -102,7 +99,7 @@ struct ProductCard: View {
     private var Mylow: some View {
         HStack(alignment: .top, spacing: 4) {
             Text("\(Image(systemName: "sparkles")) \(recommendation)")
-                .font(bodySmallSemibold)
+                .font(AppFont.caption.weight(.semibold))
                 .foregroundStyle(AppColor.brandBlue)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -111,8 +108,8 @@ struct ProductCard: View {
     // MARK: - Product name
 
     private var productName: some View {
-        Text("\(Text(brand).font(bodySmallSemibold)) \(name)")
-            .font(bodySmall)
+        Text("\(Text(brand).font(AppFont.caption.weight(.semibold))) \(name)")
+            .font(AppFont.caption)
             .foregroundStyle(AppColor.labelPrimary)
             .lineLimit(2)
     }
@@ -122,13 +119,13 @@ struct ProductCard: View {
     private var ratingRow: some View {
         HStack(spacing: 2) {
             Text(rating)
-                .font(bodySmall)
+                .font(AppFont.caption)
                 .foregroundStyle(AppColor.labelPrimary)
             Image(systemName: "star.fill")
                 .font(.system(size: 9))
                 .foregroundStyle(Color(red: 1.0, green: 0.788, blue: 0.286)) // #FFC949
             Text("(\(reviewCount))")
-                .font(bodySmall)
+                .font(AppFont.caption)
                 .foregroundStyle(AppColor.labelSecondary)
         }
         .frame(height: 16)
