@@ -16,7 +16,7 @@ struct MyLowProductsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MyHome()
+            AlternateDeliveryContactDemo()
         }
     }
 }

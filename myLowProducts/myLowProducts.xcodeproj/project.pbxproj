@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		58427F0E3007DF2E0040EE3C /* HistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58427F0D3007DF2E0040EE3C /* HistoryCard.swift */; };
 		58427F103007DF2E0040EE3C /* HomeHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */; };
+		586945F9300EA5F60023424E /* SignInTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586945F8300EA5F60023424E /* SignInTip.swift */; };
 		58FA07E23007F55F0086DA25 /* MyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FA07E13007F55F0086DA25 /* MyHome.swift */; };
 		58FA07E43007F60B0086DA25 /* MyHomeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */; };
+		58FA07F030090D9D0086DA25 /* NewHistoryEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FA07EF30090D9D0086DA25 /* NewHistoryEntrySheet.swift */; };
 		9FAF607930082DB80043682A /* SharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9FAF607830082DB80043682A /* SharedUI */; };
 		9FAF609D300851120043682A /* HomeHistoryIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF609C300851120043682A /* HomeHistoryIcon.icon */; };
-		9FAF609F300854100043682A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF609E300854100043682A /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* myLowProducts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myLowProducts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58427F0D3007DF2E0040EE3C /* HistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCard.swift; sourceTree = "<group>"; };
 		58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHistorySheet.swift; sourceTree = "<group>"; };
+		586945F8300EA5F60023424E /* SignInTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTip.swift; sourceTree = "<group>"; };
 		58FA07E13007F55F0086DA25 /* MyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHome.swift; sourceTree = "<group>"; };
 		58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeHistory.swift; sourceTree = "<group>"; };
+		58FA07EF30090D9D0086DA25 /* NewHistoryEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHistoryEntrySheet.swift; sourceTree = "<group>"; };
 		9FAF609C300851120043682A /* HomeHistoryIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = HomeHistoryIcon.icon; sourceTree = "<group>"; };
-		9FAF609E300854100043682A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -47,7 +49,6 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				9FAF609E300854100043682A /* Launch Screen.storyboard */,
 				58B6E9DB3007BECC0041A450 /* My Home History */,
 				000000000000000000000010 /* myLowProducts */,
 				5890E73830001A80000DECE3 /* Frameworks */,
@@ -75,11 +76,21 @@
 			isa = PBXGroup;
 			children = (
 				58427F0D3007DF2E0040EE3C /* HistoryCard.swift */,
-				58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */,
+				586945F8300EA5F60023424E /* SignInTip.swift */,
+				58FA07F130090E520086DA25 /* Sheets */,
 				58FA07E13007F55F0086DA25 /* MyHome.swift */,
 				58FA07E33007F60B0086DA25 /* MyHomeHistory.swift */,
+				58427F0F3007DF2E0040EE3C /* HomeHistorySheet.swift */,
+				58FA07EF30090D9D0086DA25 /* NewHistoryEntrySheet.swift */,
 			);
 			path = "My Home History";
+			sourceTree = "<group>";
+		};
+		58FA07F130090E520086DA25 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +159,6 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				9FAF609F300854100043682A /* Launch Screen.storyboard in Resources */,
 				9FAF609D300851120043682A /* HomeHistoryIcon.icon in Resources */,
 			);
 		};
@@ -158,8 +168,10 @@
 		000000000000000120000000 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				58FA07F030090D9D0086DA25 /* NewHistoryEntrySheet.swift in Sources */,
 				58FA07E23007F55F0086DA25 /* MyHome.swift in Sources */,
 				58FA07E43007F60B0086DA25 /* MyHomeHistory.swift in Sources */,
+				586945F9300EA5F60023424E /* SignInTip.swift in Sources */,
 				58427F0E3007DF2E0040EE3C /* HistoryCard.swift in Sources */,
 				58427F103007DF2E0040EE3C /* HomeHistorySheet.swift in Sources */,
 			);
@@ -317,7 +329,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -360,7 +372,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
